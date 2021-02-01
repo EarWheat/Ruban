@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruban.backend.Dao.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.ruban.backend.Entity.Order">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="orderId" property="orderId" jdbcType="BIGINT"/>
+        <result column="consumerName" property="consumerName" jdbcType="VARCHAR"/>
+        <result column="consumerPhone" property="consumerPhone" jdbcType="BIGINT"/>
+        <result column="consumerEmail" property="consumerEmail" jdbcType="VARCHAR"/>
+        <result column="consumerContact" property="consumerContact" jdbcType="VARCHAR"/>
+        <result column="consumerWxInfo" property="consumerWxInfo" jdbcType="VARCHAR"/>
+        <result column="lastLoginTime" property="lastLoginTime" jdbcType="TIMESTAMP"/>
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="weChatInfo" property="weChatInfo" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="base_column">
+        userId,userName,phone,lastLoginTime,createTime,updateTime,weChatInfo
+    </sql>
+
+    <select id="getUserByUserName" parameterType="com.ruban.backend.Entity.User" resultMap="BaseResultMap">
+        select
+        <include refid="base_column"/>
+        from ruban_user
+        where userName = #{userName,jdbcType=VARCHAR}
+    </select>
+</mapper>

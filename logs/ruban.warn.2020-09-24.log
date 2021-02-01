@@ -1,0 +1,1 @@
+2020-09-24 10:21:56||WARN ||c.z.hikari.util.DriverDataSource:70||Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.

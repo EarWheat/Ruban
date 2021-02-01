@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruban.backend.Dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.ruban.backend.Entity.User">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="userId" property="userId" jdbcType="BIGINT"/>
+        <result column="userName" property="userName" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="BIGINT"/>
+        <result column="lastLoginTime" property="lastLoginTime" jdbcType="TIMESTAMP"/>
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="weChatInfo" property="weChatInfo" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="base_column">
+        userId,userName,phone,lastLoginTime,createTime,updateTime,weChatInfo
+    </sql>
+
+    <select id="getUserByUserName" parameterType="com.ruban.backend.Entity.User" resultMap="BaseResultMap">
+        select
+        <include refid="base_column"/>
+        from ruban_user
+        where userName = #{userName,jdbcType=VARCHAR}
+    </select>
+</mapper>
